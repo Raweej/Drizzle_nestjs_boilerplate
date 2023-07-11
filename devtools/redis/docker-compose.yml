@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  redis:
+    container_name: redisCache
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+    networks:
+      - redisTestnet
+  redisinsight:
+    container_name: redisInsight
+    image: redislabs/redisinsight:latest
+    restart: always
+    ports:
+      - 8001:8001
+    volumes:
+      - redisinsight:/db
+    networks:
+      - redisTestnet
+    environment:
+    
+
+networks:
+  redisTestnet:
+
+volumes:
+  redis:
+    driver: local
+  redisinsight:
+    driver: local
