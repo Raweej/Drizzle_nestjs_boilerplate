@@ -4,12 +4,13 @@ import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from '../../drizzle/schema';
 import { DatabaseConfig } from '@/constants/environment/config';
-import { PG_CONNECTION } from '@/constants/connectPG';
+import { db, DRIZZLE_ORM } from '@/config/drizzle.config';
 
 @Module({
   providers: [
     {
-      provide: PG_CONNECTION,
+      provide: DRIZZLE_ORM,
+      // useValue: db,
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
         const connectionString =
@@ -22,6 +23,6 @@ import { PG_CONNECTION } from '@/constants/connectPG';
       },
     },
   ],
-  exports: [PG_CONNECTION],
+  exports: [DRIZZLE_ORM],
 })
 export class DrizzleModule {}
