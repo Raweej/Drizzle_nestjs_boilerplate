@@ -11,7 +11,7 @@ async function bootstrap() {
 
   await app.listen(nestConfig!.PORT, () => {
     console.log(`app listen port ${nestConfig!.PORT}`);
-    console.log(`${databaseConfig}`);
+    console.log(`url: ${databaseConfig}`);
   });
 }
 bootstrap();
