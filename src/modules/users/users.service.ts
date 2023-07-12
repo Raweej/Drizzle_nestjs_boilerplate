@@ -20,7 +20,7 @@ export class UsersService {
 
   findAll() {
     const url = this.configService.get('database.url');
-    return test;
+    return url;
   }
 
   findOne(id: number) {

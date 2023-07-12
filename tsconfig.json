@@ -12,11 +12,12 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true, // allows default imports from modules with no default export.
     "resolveJsonModule": true,
     "paths": {
       "@/*": ["src/*"],
@@ -24,7 +25,7 @@
       "@constants/*": ["src/constants/*"],
       "@modules/*": ["src/modules/*"],
       "@shared/*": ["src/shared/*"]
-    },
+    }
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["src/**/*", "test/**/*"]
 }

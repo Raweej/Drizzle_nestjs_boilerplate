@@ -9,8 +9,8 @@ async function bootstrap() {
   const nestConfig = configService.get<NestConfig>('nest');
   const databaseConfig = configService.get<DatabaseConfig>('database.url');
 
-  await app.listen(nestConfig?.PORT, () => {
-    console.log(`app listen port ${nestConfig?.PORT}`);
+  await app.listen(nestConfig!.PORT, () => {
+    console.log(`app listen port ${nestConfig!.PORT}`);
     console.log(`${databaseConfig}`);
   });
 }

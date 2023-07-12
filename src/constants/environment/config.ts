@@ -1,14 +1,14 @@
 export interface DatabaseConfig {
-  host: string;
+  host: string | undefined;
   port: number;
-  user: string;
-  password: string;
-  database: string;
+  user: string | undefined;
+  password: string | undefined;
+  database: string | undefined;
   url?: string;
 }
 
 export interface NestConfig {
-  NODE_ENV: string;
+  NODE_ENV: string | undefined;
   PORT: number;
 }
 export interface Config {

@@ -13,10 +13,9 @@ import { db, DRIZZLE_ORM } from '@/config/drizzle.config';
       // useValue: db,
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        const connectionString =
-          configService.get<DatabaseConfig>('database.url');
+        const connectionString = configService.get<string>('database.url');
         const pool = new Pool({
-          connectionString: connectionString.toString(),
+          connectionString: connectionString,
         });
 
         return drizzle(pool, { schema });
