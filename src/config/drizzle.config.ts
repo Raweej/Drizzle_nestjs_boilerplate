@@ -1,12 +1,13 @@
-// db.ts
-import { drizzle } from 'drizzle-orm/node-postgres';
-import { Pool } from 'pg';
+import type { Config } from 'drizzle-kit';
 import 'dotenv/config';
 
-const clientConnect = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
-
-export const db = drizzle(clientConnect);
+export default {
+  schema: './src/drizzle/schema.ts',
+  out: './src/drizzle/migrations',
+  driver: 'pg',
+  dbCredentials: {
+    connectionString: process.env.DATABASE_URL as string,
+  },
+} satisfies Config;
 
 export const DRIZZLE_ORM = 'DRIZZLE_ORM';

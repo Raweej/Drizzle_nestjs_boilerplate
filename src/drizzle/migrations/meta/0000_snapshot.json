@@ -1,9 +1,30 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "931843cb-b036-40dc-940e-d181c76114cb",
+  "id": "43a15601-f1cd-4289-a92d-3bae8b466352",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "table": {
+      "name": "table",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "street": {
+          "name": "street",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
     "users": {
       "name": "users",
       "schema": "",

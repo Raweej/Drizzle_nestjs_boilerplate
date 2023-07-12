@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { users, User } from '@/drizzle/schema';
+import { users, User, NewUser } from '@/drizzle/schema';
 import { DRIZZLE_ORM } from '@/config/drizzle.config';
 import { ConfigService } from '@nestjs/config';
 @Injectable()
@@ -18,9 +18,18 @@ export class UsersService {
       .returning();
   }
 
-  findAll() {
-    const url = this.configService.get('database.url');
-    return url;
+  async insertUser(user: NewUser): Promise<User[]> {
+    return await this.drizzle.insert(users).values(user).returning();
+  }
+
+  async getUsers() {
+    const result = await this.drizzle
+      .select({
+        id: users.id,
+        email: users.email,
+      })
+      .from(users);
+    return result;
   }
 
   findOne(id: number) {
