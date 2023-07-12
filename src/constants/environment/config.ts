@@ -4,7 +4,7 @@ export interface DatabaseConfig {
   user: string | undefined;
   password: string | undefined;
   database: string | undefined;
-  url?: string;
+  url?: string | undefined;
 }
 
 export interface NestConfig {
