@@ -1,26 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from '../../drizzle/schema';
-import { DRIZZLE_ORM } from '@/config/drizzle.config';
+import { DRIZZLE_ORM, DbProvider } from './drizzle.provider';
 
+@Global()
 @Module({
-  providers: [
-    {
-      provide: DRIZZLE_ORM,
-      // useValue: db,
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => {
-        const connectionString = configService.get<string>('database.url');
-        const pool = new Pool({
-          connectionString: connectionString,
-        });
-
-        return drizzle(pool, { schema });
-      },
-    },
-  ],
+  providers: [DbProvider],
   exports: [DRIZZLE_ORM],
 })
 export class DrizzleModule {}

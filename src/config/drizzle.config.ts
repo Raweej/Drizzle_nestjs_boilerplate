@@ -9,5 +9,3 @@ export default {
     connectionString: process.env.DATABASE_URL as string,
   },
 } satisfies Config;
-
-export const DRIZZLE_ORM = 'DRIZZLE_ORM';

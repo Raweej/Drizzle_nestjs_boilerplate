@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { users, User, NewUser } from '@/drizzle/schema';
-import { DRIZZLE_ORM } from '@/config/drizzle.config';
+import { DRIZZLE_ORM } from '@/modules/drizzle/drizzle.provider';
 import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class UsersService {

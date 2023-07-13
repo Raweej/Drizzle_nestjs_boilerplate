@@ -4,7 +4,6 @@ import { UsersController } from './users.controller';
 import { DrizzleModule } from '@/modules/drizzle/drizzle.module';
 
 @Module({
-  imports: [DrizzleModule],
   controllers: [UsersController],
   providers: [UsersService],
 })
